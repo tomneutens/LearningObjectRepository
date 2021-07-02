@@ -32,6 +32,7 @@ learningObjectController.createLearningObject = async (req, res) => {
             -> Create storage location on disk for this learning object (use uuid)
             -> Save files in that location
             -> add uuid to metadata and save metadata to the database.
+            -> return rendered learning object to the user
             
         */
 

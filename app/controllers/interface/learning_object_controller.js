@@ -23,6 +23,18 @@ learningObjectController.createLearningObject = async (req, res) => {
         await uploadFilesMiddleware(req, res);
         logger.info(req.files);
 
+        /*
+            TODO: process files:
+            -> look for main markdown file and extract metadata;
+            -> check validity of the different files;
+            -> if correct file structure/types:
+            -> Generate learning object based on metadata
+            -> Create storage location on disk for this learning object (use uuid)
+            -> Save files in that location
+            -> add uuid to metadata and save metadata to the database.
+            
+        */
+
         if (req.files.length <= 0) {
             return res.send(`You must select at least 1 file.`);
         }

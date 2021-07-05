@@ -3,11 +3,11 @@ import http from 'http'
 import https from 'https'
 import fs from "fs"
 import Logger from './logger.js'
-import MarkedProcessor from './processors/markdown/marked_processor.js'
+import MarkdownProcessor from './processors/markdown/markdown_processor.js'
 
 let logger = Logger.getLogger();
 
-let proc = new MarkedProcessor();
+let proc = new MarkdownProcessor();
 let html = proc.render('# heading+');
 logger.info(html);
 

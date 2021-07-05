@@ -1,4 +1,4 @@
-class LearningObjectRenderer{
+class LearningObjectMarkdownRenderer{
     learingObjectPrefix = '@learning-object';
     heading(text, level) {
         const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
@@ -23,4 +23,4 @@ class LearningObjectRenderer{
     
 }
 
-export default LearningObjectRenderer
+export default LearningObjectMarkdownRenderer

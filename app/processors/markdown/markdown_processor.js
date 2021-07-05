@@ -1,15 +1,18 @@
 import marked from 'marked'
 import DOMPurify from 'isomorphic-dompurify';
-import LearningObjectRenderer from './learing_object_renderer.js';
+import LearningObjectMarkdownRenderer from './learing_object_markdown_renderer.js';
 import ObjectConverter from '../../utils/object_converter.js';
 import yaml from "js-yaml"
 import Logger from '../../logger.js';
+import Processor from '../processor.js';
+import InvalidArgumentError from "../../utils/invalid_argument_error.js"
 
-class MarkedProcessor {
+class MarkdownProcessor extends Processor{
     logger = Logger.getLogger();
     constructor(){
+        super();
         // A bit stupid but marked does not work with an instance of a class only with plain object
-        const renderer = new ObjectConverter().toJSON(new LearningObjectRenderer());
+        const renderer = new ObjectConverter().toJSON(new LearningObjectMarkdownRenderer());
         marked.use({ renderer });
     }
 
@@ -18,8 +21,14 @@ class MarkedProcessor {
      * @param {string} mdText Plain markdown string to be converted to html. May contain links to learning objects which results in recursive processing.
      * @returns The sanitized version of the generated html.
      */
-    render(mdText){
-        return DOMPurify.sanitize(marked(mdText));
+    render(mdText, args = {}){
+        let html = "";
+        try {
+            html = DOMPurify.sanitize(marked(mdText));
+        } catch (e){
+            throw new InvalidArgumentError(e.message);
+        }
+        return html;
     }
 
     /**
@@ -59,4 +68,4 @@ class MarkedProcessor {
     }
 }
 
-export default MarkedProcessor;
+export default MarkdownProcessor;

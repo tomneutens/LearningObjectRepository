@@ -1,0 +1,30 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;440&lt;/x&gt;&lt;y&gt;250&lt;/y&gt;&lt;w&gt;210&lt;/w&gt;&lt;h&gt;60&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;&amp;lt;&amp;lt;Class&amp;gt;&amp;gt;
+processors::InlineImageProcessor
+--
++render(imageUrl: string, ?args: object): string
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;240&lt;/x&gt;&lt;y&gt;110&lt;/y&gt;&lt;w&gt;190&lt;/w&gt;&lt;h&gt;30&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;&amp;lt;-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;170;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>411</x><y>130</y><w>210</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+processors::Processor
+--
+/+render()/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>91</x><y>340</y><w>340</w><h>80</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+processors::MarkdownProcessor
+--
++render(mdText: string, ?args: object): string
++stripYAMLMetaData(mdTextWithYAMLMeta: string): object</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>271</x><y>180</y><w>240</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;10;10;160</additional_attributes></element><element><id>UMLClass</id><coordinates><x>481</x><y>450</y><w>210</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+processors::BlockImageProcessor
+--
++render(imageUrl: string, ?args: object): string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>571</x><y>390</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>481</x><y>340</y><w>210</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+processors::InlineImageProcessor
+--
++render(imageUrl: string, ?args: object): string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>531</x><y>180</y><w>30</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;160</additional_attributes></element><element><id>UMLClass</id><coordinates><x>691</x><y>130</y><w>420</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+processors::ProcessingProxy
+--
+-processors: object&lt;ProcessorContentType, Processor&gt;
++render(contentType: ProcessorContentType, text: string, args: object): string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>611</x><y>150</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>340</y><w>210</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+processors::TextProcessor
+--
++render(text: string, ?args: object): string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>581</x><y>180</y><w>300</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;280;160</additional_attributes></element><element><id>Relation</id><coordinates><x>50</x><y>90</y><w>890</w><h>320</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>860;40;860;10;10;10;10;300;40;300</additional_attributes></element></diagram>

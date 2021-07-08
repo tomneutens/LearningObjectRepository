@@ -5,7 +5,7 @@
 npm install
 ```
 
-Create local .env file with the correct configuration. These are the keys that are used right now:
+Create local .env in project root file with the correct configuration. These are the keys that are used right now:
 
 - NODE_ENV = development
 - HTTP_PORT = 8085

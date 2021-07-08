@@ -1,6 +1,9 @@
 import Logger from "../../logger.js"
 import multer from "multer"
 import { uploadFilesMiddleware } from "../../utils/upload.js"
+import MarkdownProcessor from '../../processors/markdown/markdown_processor.js'
+import LearingObject from "../../models/learning_object.js"
+import LearningObject from "../../models/learning_object.js"
 
 let logger = Logger.getLogger()
 
@@ -16,12 +19,26 @@ learningObjectController.getCreateLearningObject = (req, res) => {
     });
 };
 
+learningObjectController.findMarkdownIndex = (files) => {
+    let indexregex = /.*index.md$/
+    let indexfile;
+    for (let i = 0 ; i < files.length ; i++){
+        if (files[i]["originalname"].match(indexregex)){
+            return files[i];
+        }
+    }
+};
 
 learningObjectController.createLearningObject = async (req, res) => {
     logger.info("Trying to upload files");
     try {
         await uploadFilesMiddleware(req, res);
         logger.info(req.files);
+        let indexfile = learningObjectController.findMarkdownIndex(req.files);
+        let mdString = indexfile.buffer.toString('utf8');
+        let proc = new MarkdownProcessor();
+        let splitdata = proc.stripYAMLMetaData(mdString);
+        const learningObject = new LearningObject(splitdata.metadata)
 
         /*
             TODO: process files:

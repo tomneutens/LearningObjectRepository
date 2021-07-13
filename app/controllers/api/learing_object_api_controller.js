@@ -1,13 +1,18 @@
 import Logger from "../../logger.js"
+import path from "path"
 
 let logger = Logger.getLogger()
 
 let learningObjectApiController = {}
 
 learningObjectApiController.getLearningObject = (req, res) => {
-    logger.info("TODO: retrieve learing object content (rendered version) and send to user");
-    res.status(200)
-        .send("succes");
+    let id = req.params.id;
+    let redirectpath = path.join("/", process.env.LEARNING_OBJECT_STORAGE_LOCATION, id);
+    return res.redirect(redirectpath);
+};
+
+learningObjectApiController.getMetadata = (req, res) => {
+    
 };
 
 

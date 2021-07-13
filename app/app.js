@@ -24,7 +24,7 @@ lti.setup('LTIKEY',
 // When receiving successful LTI launch redirects to app
 lti.onConnect(async (token, req, res) => {
     console.log(token)
-    return res.sendFile(path.join(path.resolve(), './static/html/test.html'))
+    return res.redirect('/static/html/test.html');
 })
 
 lti.onInvalidToken(async (req, res, next) => { 
@@ -70,6 +70,7 @@ app.use('/js', express.static(path.join(path.resolve(), 'node_modules/bootstrap/
 app.use('/js', express.static(path.join(path.resolve(), 'node_modules/jquery/dist')));
 app.use('/js', express.static(path.join(path.resolve(), 'node_modules/@fortawesome/fontawesome-free/js')));
 app.use('/js', express.static(path.join(path.resolve(), 'app/static/js')));
+app.use('/static', express.static(path.join(path.resolve(), 'app/static')));
 app.set('views', path.join(path.resolve(), 'app', 'views'));
 app.set('view engine', 'ejs');
 

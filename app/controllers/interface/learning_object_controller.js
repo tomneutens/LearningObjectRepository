@@ -33,6 +33,18 @@ learningObjectController.findMarkdownIndex = (files) => {
 };
 
 
+/*
+            TODO: process files:
+            -> look for main markdown file and extract metadata;
+            -> check validity of the different files;
+            -> if correct file structure/types:
+            -> Generate learning object based on metadata
+            -> Create storage location on disk for this learning object (use uuid)
+            -> Save files in that location
+            -> add uuid to metadata and save metadata to the database.
+            -> return rendered learning object to the user
+            
+        */
 /***
  * TODO: split function -> too many responsabilities
  */
@@ -41,6 +53,10 @@ learningObjectController.createLearningObject = async (req, res) => {
     try {
         await uploadFilesMiddleware(req, res);
         logger.info(req.files);
+        for (let i = 0 ; i < req.files.length ; i++){
+
+            req.files[i].originalname = path.join(...req.files[i].originalname.split(path.sep).slice(1));
+        }
         let indexfile = learningObjectController.findMarkdownIndex(req.files);  // Look for the index markdown file
         let indexfile_html = indexfile.originalname.replace(".md", ".html");     // create filename for index.html page
         let mdString = indexfile.buffer.toString('utf8');   // Read index markdown file into string
@@ -81,20 +97,6 @@ learningObjectController.createLearningObject = async (req, res) => {
                 });
             });
         }
-
-
-        /*
-            TODO: process files:
-            -> look for main markdown file and extract metadata;
-            -> check validity of the different files;
-            -> if correct file structure/types:
-            -> Generate learning object based on metadata
-            -> Create storage location on disk for this learning object (use uuid)
-            -> Save files in that location
-            -> add uuid to metadata and save metadata to the database.
-            -> return rendered learning object to the user
-            
-        */
 
         if (req.files.length <= 0) {
             return res.send(`You must select at least 1 file.`);

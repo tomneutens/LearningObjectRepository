@@ -1,0 +1,82 @@
+{
+    "$id": "https://dwengo.org/learning_object_result.schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Schema for resultset for learning object 60ed3fb3656a2e568d354abf",
+    "type": "object",
+    "properties": {
+        "learning_object_id": {
+            "type": "string"
+        },
+        "results": {
+            "type": "object",
+            "properties": {
+                "quiz_pythagoras": {
+                    "type": "object",
+                    "title": "score quiz pythagorean theorem",
+                    "description": "Applying the pythagorean theorem",
+                    "properties": {
+                        "score": {
+                            "title": "The final score on the quiz",
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10
+                        },
+                        "time_spent": {
+                            "title": "The time spent solving the quiz in seconds",
+                            "type": "number",
+                            "minimum": 0
+                        }
+                    }
+                },
+                "345rule_drawing": {
+                    "type": "object",
+                    "title": "Drawing of the 3, 4, 5-rule",
+                    "description": "Learners have to draw a 3, 4, 5 triangle",
+                    "properties": {
+                        "image": {
+                            "type": "string",
+                            "contentEncoding": "base64",
+                            "contentMediaType": "image/png"
+                        }
+                    }
+                },
+                "difficulty_eleboration": {
+                    "type": "object",
+                    "title": "Difficulty reflection",
+                    "description": "The student fills out how difficult he/she thought the exercise was.", 
+                    "properties": {
+                        "reflection": {
+                            "type": "string"
+                        }
+                    }
+                }
+                
+            }
+        },
+        "subresults": {
+            "type": "object",
+            "properties": {
+                "60ed59cd213df45c961d03d7": {
+                    "type": "object",
+                    "title": "Quiz about triangles",
+                    "properties": {
+                        "score": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                        }
+                    }
+                }
+            },
+            "60ed7e95d9410312a7de2727": {
+                "type": "object",
+                "title": "Video about the history of Pythagoras.",
+                "properties": {
+                    "watched": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "learningObjectId": "60ed3fb3656a2e568d354abf",
+    "results": {
+        "quiz_pythagoras":
+            {
+                "score": 8,
+                "time_spent": 214
+            },
+        "345rule_drawing":
+            {
+                "image": "base64 encoding of drawn image data"
+            },
+        "difficulty_eleboration":
+            {
+                
+                "reflection": "In the beginning it was unclear why this was usefull, however after the masonry example it was clear."
+            }
+    },
+    "subresults": {
+        "60ed59cd213df45c961d03d7": {
+            "score": 78
+        },
+        "60ed7e95d9410312a7de2727": {
+            "watched": true
+        }
+    }
+}

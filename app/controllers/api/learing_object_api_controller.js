@@ -11,9 +11,9 @@ learningObjectApiController.getLearningObject = (req, res) => {
     return res.redirect(redirectpath);
 };
 
-learningObjectApiController.getMetadata = (req, res) => {
-    
-};
+/*learningObjectApiController.getMetadata = (req, res) => {
+
+};*/
 
 
 export default learningObjectApiController;

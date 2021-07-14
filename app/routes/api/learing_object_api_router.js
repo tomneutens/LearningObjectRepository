@@ -6,8 +6,8 @@ learningObjectApiRouter.route("/getContent/:id").get((req, res) => {
     learningObjectApiController.getLearningObject(req, res);
 });
 
-learningObjectApiController.rout("/getMetadata/:id").get((req, res) => {
-    learningObjectApiController.getMetadata(req, res);
-});
+// learningObjectApiController.route("/getMetadata/:id").get((req, res) => {
+//     learningObjectApiController.getMetadata(req, res);
+// });
 
 export default learningObjectApiRouter;

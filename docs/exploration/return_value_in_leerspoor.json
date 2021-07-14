@@ -1,0 +1,38 @@
+[
+    {
+        "leerobject_id": "id_learning_object_05",
+        "instructie": "Klik op de volgende link en maak oefening 6.",
+        "start_node": "true",
+        "transitions": [
+            {
+                "next": "id_learning_object_07",
+                "default": "true"
+            },
+            {
+                "condition": {
+                    "$and": [
+                        {"$gt": ["$['retults']['quiz_pythagoras']['score']", 6]},
+                        {"$lt": ["$['retults']['quiz_pythagoras']['time_spent']", 230]}
+                    ]
+                    
+                },
+                "next": "id_learning_object_08"
+            }
+        ]   
+    },
+    {
+        "leerobject_id": "id_learning_object_07",
+        "instructie": "Klik op de volgende link en maak oefening 7.",
+        "transitions": [
+            {
+                "condition": "true",
+                "next": "id_learning_object_08"
+            }
+        ]   
+    },
+    {
+        "leerobject_id": "id_learning_object_08",
+        "instructie": "Klik op de volgende link en maak oefening 8."  
+    }
+ ]
+ 

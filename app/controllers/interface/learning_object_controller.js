@@ -43,6 +43,8 @@ learningObjectController.findMarkdownIndex = (files) => {
             -> Save files in that location
             -> add uuid to metadata and save metadata to the database.
             -> return rendered learning object to the user
+
+            -> If other type than md, look for metadata.md or metadata.yaml 
             
         */
 /***

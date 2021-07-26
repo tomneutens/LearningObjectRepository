@@ -3,15 +3,19 @@ import InlineImageProcessor from "./image/inline_image_processor.js";
 import MarkdownProcessor from "./markdown/markdown_processor.js";
 import TextProcessor from "./text/text_processor.js";
 import { ProcessorContentType } from "./content_type.js"
+import AudioProcessor from "./audio/audio_processor.js";
+import PdfProcessor from "./pdf/pdf_processor.js";
 
 
 class ProcessingProxy {
-    constructor(){
-        this.processors = {        }
+    constructor() {
+        this.processors = {}
         this.processors[ProcessorContentType.IMAGE_INLINE] = new InlineImageProcessor();
         this.processors[ProcessorContentType.IMAGE_BLOCK] = new BlockImageProcessor();
         this.processors[ProcessorContentType.TEXT_MARKDOWN] = new MarkdownProcessor();
         this.processors[ProcessorContentType.TEXT_PLAIN] = new TextProcessor();
+        this.processors[ProcessorContentType.AUDIO_MPEG] = new AudioProcessor();
+        this.processors[ProcessorContentType.APPLICATION_PDF] = new PdfProcessor();
     }
 
     /**
@@ -20,7 +24,7 @@ class ProcessingProxy {
      * @param {string} inputString 
      * @param {object} args 
      */
-    render(contentType, inputString, args = {}){
+    render(contentType, inputString, args = {}) {
         return this.processors[contentType].render(inputString, args);
     }
 }

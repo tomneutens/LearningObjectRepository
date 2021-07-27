@@ -39,12 +39,12 @@ const learningObjectSchema = new mongoose.Schema({
         trim: true,
     },
     keywords:   // Keywords = list of strings
-        [{type: String}],
+        [{ type: String }],
     educational_goals:
         [  // List of strings containing the identifiers of the educational goals
             {
                 source: { type: String },    // Reference to a specific set of educational goals ex. onderwijs.api.vlaanderen.be/onderwijsdoelen
-                id: {type: String}           // Unique identifier for the educational goals ex. 10.1.1
+                id: { type: String }           // Unique identifier for the educational goals ex. 10.1.1
             }
         ],
     copyright: String,
@@ -52,7 +52,7 @@ const learningObjectSchema = new mongoose.Schema({
     content_type: {
         required: true,
         type: String,
-        enum: ["text/plain", "text/markdown", "text/html", "image/image"],  // TODO: add all allowed content types
+        enum: ["text/plain", "text/markdown", "text/html", "image/image", "application/pdf", "audio/mpeg"],  // TODO: add all allowed content types
     },
     available: {
         type: Boolean,
@@ -61,7 +61,7 @@ const learningObjectSchema = new mongoose.Schema({
     target_ages: [
         {
             type: Number,
-            min:0,
+            min: 0,
             max: 150,
             get: v => Math.round(v),
             set: v => Math.round(v)
@@ -75,8 +75,8 @@ const learningObjectSchema = new mongoose.Schema({
         set: v => Math.round(v)
     },
     return_value: {
-        callback_url: {type: String},
-        callback_schema: {type: Object}
+        callback_url: { type: String },
+        callback_schema: { type: Object }
     },
     content_location: {
         type: String,
@@ -84,14 +84,14 @@ const learningObjectSchema = new mongoose.Schema({
     }
 
 
-}, {timestamps: {createdAt: 'created_at'}});
+}, { timestamps: { createdAt: 'created_at' } });
 
 // Enforce unique index on combination of _id, version and language
-learningObjectSchema.index({uuid: 1, version: 1, language: 1}, {unique: true});
+learningObjectSchema.index({ uuid: 1, version: 1, language: 1 }, { unique: true });
 // Check if content location is correct URL
 learningObjectSchema.path('content_location').validate((val) => {
     let urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-    return urlRegex.test(val);q
+    return urlRegex.test(val); q
 });
 
 // Check if language exists
@@ -102,16 +102,16 @@ learningObjectSchema.path('content_location').validate((val) => {
 });*/
 
 // Enforce new version on save
-learningObjectSchema.pre('save', function(next){
-    if (this.language){
+learningObjectSchema.pre('save', function (next) {
+    if (this.language) {
         this.language = this.language.toUpperCase();
     }
-    this.constructor.findOne({uuid: this.uuid}).sort('-version').exec((err, prevVersion) => {
+    this.constructor.findOne({ uuid: this.uuid }).sort('-version').exec((err, prevVersion) => {
         if (err) new Logger().error(err);
         // If no document with the specified uuid, set version to 0 else increment version
-        if (!prevVersion){
+        if (!prevVersion) {
             this.version = 0;
-        }else{
+        } else {
             this.version = prevVersion.version + 1;
         }
         next();

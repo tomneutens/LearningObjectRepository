@@ -24,7 +24,9 @@ class MarkdownProcessor extends Processor {
     render(mdText, args = {}) {
         let html = "";
         try {
-            html = DOMPurify.sanitize(marked(mdText));
+            //TODO DOMPurify.sanitize deletes embed, iframe or object => change specs in some way
+            //html = DOMPurify.sanitize(marked(mdText)); 
+            html = marked(mdText);
         } catch (e) {
             throw new InvalidArgumentError(e.message);
         }

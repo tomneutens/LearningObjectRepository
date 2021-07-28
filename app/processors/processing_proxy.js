@@ -20,7 +20,6 @@ class ProcessingProxy {
         this.processors[ProcessorContentType.APPLICATION_PDF] = new PdfProcessor();
 
         this.processors[ProcessorContentType.EXTERN] = new ExternProcessor();
-        // this.processors[ProcessorContentType.LEARNING_OBJECT] = new LearningObjectProcessor();
     }
 
     /**
